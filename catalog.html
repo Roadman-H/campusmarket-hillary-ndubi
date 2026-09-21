@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -174,6 +174,492 @@
     </div>
 </footer>
 ```
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse products available on CampusMarket.">
+    <title>CampusMarket | Catalog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">CampusMarket</a>
+
+            <nav aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="catalog.html" class="active">Catalog</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="page-banner">
+            <div class="container">
+                <p class="eyebrow">CAMPUSMARKET CATALOG</p>
+
+                <h1>Find what you need for campus life.</h1>
+
+                <p>
+                    Browse our selection of electronics, study materials,
+                    accessories, fashion items, and everyday essentials.
+                </p>
+            </div>
+        </section>
+
+        <section class="catalog-section">
+            <div class="container">
+
+                <div class="catalog-introduction">
+                    <div>
+                        <p class="eyebrow">OUR PRODUCTS</p>
+                        <h2>Campus Essentials</h2>
+                    </div>
+
+                    <p>
+                        Explore our available products and discover useful
+                        items for your academic and everyday campus needs.
+                    </p>
+                </div>
+
+
+                <!-- Catalog Controls -->
+
+                <div class="catalog-controls">
+
+                    <div class="search-control">
+                        <label for="searchInput">
+                            Search products
+                        </label>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search by product name..."
+                        >
+                    </div>
+
+                    <div class="category-control">
+                        <label for="categoryFilter">
+                            Category
+                        </label>
+
+                        <select id="categoryFilter">
+                            <option value="all">
+                                All Categories
+                            </option>
+
+                            <option value="electronics">
+                                Electronics
+                            </option>
+
+                            <option value="accessories">
+                                Accessories
+                            </option>
+
+                            <option value="stationery">
+                                Stationery
+                            </option>
+
+                            <option value="books">
+                                Books
+                            </option>
+
+                            <option value="fashion">
+                                Fashion
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <p id="noResultsMessage" class="no-results" hidden>
+                    No products match your search.
+                </p>
+
+
+                <!-- Product Grid -->
+
+                <div class="product-grid catalog-grid">
+
+
+                    <!-- Student Laptop -->
+
+                    <article
+                        class="product-card"
+                        data-category="electronics"
+                        data-price="45000"
+                    >
+                        <div class="product-placeholder">
+                            LAPTOP
+                        </div>
+
+                        <div class="product-content">
+
+                            <p class="product-category">
+                                Electronics
+                            </p>
+
+                            <h3>
+                                Student Laptop
+                            </h3>
+
+                            <p>
+                                A reliable laptop suitable for programming,
+                                assignments, research, and everyday student work.
+                            </p>
+
+                            <p class="price">
+                                KSh 45,000
+                            </p>
+
+                            <div class="quantity-control">
+
+                                <label for="laptopQuantity">
+                                    Quantity
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="laptopQuantity"
+                                    class="quantity-input"
+                                    min="1"
+                                    value="1"
+                                >
+
+                                <p class="quantity-total">
+                                    Total:
+                                    <strong>
+                                        KSh 45,000
+                                    </strong>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </article>
+
+
+                    <!-- Campus Backpack -->
+
+                    <article
+                        class="product-card"
+                        data-category="accessories"
+                        data-price="2500"
+                    >
+                        <div class="product-placeholder">
+                            BACKPACK
+                        </div>
+
+                        <div class="product-content">
+
+                            <p class="product-category">
+                                Accessories
+                            </p>
+
+                            <h3>
+                                Campus Backpack
+                            </h3>
+
+                            <p>
+                                A durable backpack with compartments for
+                                books, a laptop, and other daily essentials.
+                            </p>
+
+                            <p class="price">
+                                KSh 2,500
+                            </p>
+
+                            <div class="quantity-control">
+
+                                <label for="backpackQuantity">
+                                    Quantity
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="backpackQuantity"
+                                    class="quantity-input"
+                                    min="1"
+                                    value="1"
+                                >
+
+                                <p class="quantity-total">
+                                    Total:
+                                    <strong>
+                                        KSh 2,500
+                                    </strong>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </article>
+
+
+                    <!-- Wireless Headphones -->
+
+                    <article
+                        class="product-card"
+                        data-category="electronics"
+                        data-price="3500"
+                    >
+                        <div class="product-placeholder">
+                            HEADPHONES
+                        </div>
+
+                        <div class="product-content">
+
+                            <p class="product-category">
+                                Electronics
+                            </p>
+
+                            <h3>
+                                Wireless Headphones
+                            </h3>
+
+                            <p>
+                                Comfortable wireless headphones for studying,
+                                online learning, music, and entertainment.
+                            </p>
+
+                            <p class="price">
+                                KSh 3,500
+                            </p>
+
+                            <div class="quantity-control">
+
+                                <label for="headphonesQuantity">
+                                    Quantity
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="headphonesQuantity"
+                                    class="quantity-input"
+                                    min="1"
+                                    value="1"
+                                >
+
+                                <p class="quantity-total">
+                                    Total:
+                                    <strong>
+                                        KSh 3,500
+                                    </strong>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </article>
+
+
+                    <!-- Academic Notebook -->
+
+                    <article
+                        class="product-card"
+                        data-category="stationery"
+                        data-price="350"
+                    >
+                        <div class="product-placeholder">
+                            NOTEBOOK
+                        </div>
+
+                        <div class="product-content">
+
+                            <p class="product-category">
+                                Stationery
+                            </p>
+
+                            <h3>
+                                Academic Notebook
+                            </h3>
+
+                            <p>
+                                A high-quality notebook for lectures,
+                                assignments, revision, and personal notes.
+                            </p>
+
+                            <p class="price">
+                                KSh 350
+                            </p>
+
+                            <div class="quantity-control">
+
+                                <label for="notebookQuantity">
+                                    Quantity
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="notebookQuantity"
+                                    class="quantity-input"
+                                    min="1"
+                                    value="1"
+                                >
+
+                                <p class="quantity-total">
+                                    Total:
+                                    <strong>
+                                        KSh 350
+                                    </strong>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </article>
+
+
+                    <!-- Programming Textbook -->
+
+                    <article
+                        class="product-card"
+                        data-category="books"
+                        data-price="2800"
+                    >
+                        <div class="product-placeholder">
+                            TEXTBOOK
+                        </div>
+
+                        <div class="product-content">
+
+                            <p class="product-category">
+                                Books
+                            </p>
+
+                            <h3>
+                                Programming Textbook
+                            </h3>
+
+                            <p>
+                                A beginner-friendly programming textbook
+                                covering fundamental software development concepts.
+                            </p>
+
+                            <p class="price">
+                                KSh 2,800
+                            </p>
+
+                            <div class="quantity-control">
+
+                                <label for="textbookQuantity">
+                                    Quantity
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="textbookQuantity"
+                                    class="quantity-input"
+                                    min="1"
+                                    value="1"
+                                >
+
+                                <p class="quantity-total">
+                                    Total:
+                                    <strong>
+                                        KSh 2,800
+                                    </strong>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </article>
+
+
+                    <!-- Campus Hoodie -->
+
+                    <article
+                        class="product-card"
+                        data-category="fashion"
+                        data-price="2000"
+                    >
+                        <div class="product-placeholder">
+                            HOODIE
+                        </div>
+
+                        <div class="product-content">
+
+                            <p class="product-category">
+                                Fashion
+                            </p>
+
+                            <h3>
+                                Campus Hoodie
+                            </h3>
+
+                            <p>
+                                A comfortable everyday hoodie suitable for
+                                lectures, study sessions, and casual campus wear.
+                            </p>
+
+                            <p class="price">
+                                KSh 2,000
+                            </p>
+
+                            <div class="quantity-control">
+
+                                <label for="hoodieQuantity">
+                                    Quantity
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="hoodieQuantity"
+                                    class="quantity-input"
+                                    min="1"
+                                    value="1"
+                                >
+
+                                <p class="quantity-total">
+                                    Total:
+                                    <strong>
+                                        KSh 2,000
+                                    </strong>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                &copy; 2026 CampusMarket. All rights reserved.
+            </p>
+
+            <p>
+                Built for the university community.
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="app.js"></script>
 
 </body>
 </html>

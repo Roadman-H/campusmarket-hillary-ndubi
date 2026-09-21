@@ -434,3 +434,89 @@ Responsive Design
 ```
 
 }
+
+
+/* ========================================
+   Part 2 - Catalog Controls
+   ======================================== */
+
+.catalog-controls {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-bottom: 35px;
+    padding: 24px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.catalog-controls label,
+.quantity-control label {
+    display: block;
+    margin-bottom: 8px;
+    color: #374151;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.catalog-controls input,
+.catalog-controls select,
+.quantity-control input {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    color: #1f2937;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.catalog-controls input:focus,
+.catalog-controls select:focus,
+.quantity-control input:focus {
+    outline: none;
+    border-color: #111827;
+}
+
+.no-results {
+    margin-bottom: 30px;
+    padding: 18px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    color: #4b5563;
+    text-align: center;
+}
+
+.quantity-control {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.quantity-control input {
+    max-width: 120px;
+}
+
+.quantity-total {
+    margin-top: 12px;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.quantity-total strong {
+    color: #111827;
+}
+
+
+/* ========================================
+   Part 2 - Responsive Controls
+   ======================================== */
+
+@media (max-width: 800px) {
+
+    .catalog-controls {
+        grid-template-columns: 1fr;
+    }
+}
