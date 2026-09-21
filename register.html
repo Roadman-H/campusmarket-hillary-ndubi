@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a CampusMarket account.">
+    <title>CampusMarket | Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <a href="index.html" class="logo">CampusMarket</a>
+
+        <nav aria-label="Main navigation">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="register.html" class="active">Register</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <section class="page-banner">
+        <div class="container">
+
+            <p class="eyebrow">CAMPUSMARKET REGISTRATION</p>
+
+            <h1>Create your account.</h1>
+
+            <p>
+                Join CampusMarket and make shopping for campus essentials
+                simple and convenient.
+            </p>
+
+        </div>
+    </section>
+
+
+    <section class="register-section">
+
+        <div class="container">
+
+            <div class="register-box">
+
+                <div class="register-heading">
+
+                    <p class="eyebrow">GET STARTED</p>
+
+                    <h2>Register for CampusMarket</h2>
+
+                    <p>
+                        Fill in the details below to create your account.
+                    </p>
+
+                </div>
+
+
+                <form id="registrationForm" novalidate>
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            required
+                        >
+
+                        <p
+                            class="form-error"
+                            id="fullNameError"
+                            aria-live="polite"
+                        ></p>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                        >
+
+                        <p
+                            class="form-error"
+                            id="emailError"
+                            aria-live="polite"
+                        ></p>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                        >
+
+                        <p
+                            class="form-error"
+                            id="passwordError"
+                            aria-live="polite"
+                        ></p>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            required
+                        >
+
+                        <p
+                            class="form-error"
+                            id="confirmPasswordError"
+                            aria-live="polite"
+                        ></p>
+
+                    </div>
+
+
+                    <div class="password-toggle">
+
+                        <label for="showPassword">
+
+                            <input
+                                type="checkbox"
+                                id="showPassword"
+                            >
+
+                            Show passwords
+
+                        </label>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="button form-button"
+                    >
+                        Create Account
+                    </button>
+
+
+                    <p
+                        class="form-success"
+                        id="formSuccess"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+
+        <p>
+            &copy; 2026 CampusMarket. All rights reserved.
+        </p>
+
+        <p>
+            Built for the university community.
+        </p>
+
+    </div>
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
