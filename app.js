@@ -1,7 +1,5 @@
 // ========================================
-// CampusMarket - JavaScript
-// Part 2: Filtering and Calculations
-// Part 3: Form Validation and Interactivity
+// CampusMarket 
 // ========================================
 
 
