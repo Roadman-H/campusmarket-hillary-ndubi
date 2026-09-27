@@ -287,6 +287,13 @@ Product Cards
   letter-spacing: 1px;
 }
 
+.product-card > img {
+  width: 100%;
+  height: 190px;
+  display: block;
+  object-fit: cover;
+}
+
 .product-content {
   padding: 24px;
 }
