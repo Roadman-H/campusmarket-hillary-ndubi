@@ -516,6 +516,19 @@ Part 2 - Catalog Controls
   font-size: 0.9rem;
 }
 
+.quantity-error {
+    min-height: 20px;
+    margin-top: 6px;
+    color: #b91c1c;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.quantity-error:not(:empty) {
+    opacity: 1;
+}
+
 .quantity-total strong {
   color: #111827;
 }
@@ -756,3 +769,215 @@ Part 3 - Responsive Registration
     }
 
 }
+
+/* ========================================
+   Product Ratings and Reviews
+======================================== */
+
+.review-section {
+    margin-top: 25px;
+    padding-top: 22px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.review-heading {
+    margin-bottom: 10px;
+    color: #374151;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    width: fit-content;
+    margin-bottom: 20px;
+}
+
+.star-rating input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.star-rating label {
+    padding: 2px;
+    color: #d1d5db;
+    font-size: 1.7rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input:checked ~ label {
+    color: #111827;
+}
+
+.star-rating label:hover {
+    transform: scale(1.1);
+}
+
+.star-rating input:focus-visible + label {
+    outline: 2px solid #111827;
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+.review-section > label {
+    display: block;
+    margin-bottom: 8px;
+    color: #374151;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.review-input {
+    width: 100%;
+    min-height: 90px;
+    padding: 12px 14px;
+    resize: vertical;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    color: #1f2937;
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-input:focus {
+    outline: none;
+    border-color: #111827;
+    box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.08);
+}
+
+.review-error {
+    min-height: 20px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+    color: #b91c1c;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.review-error:not(:empty) {
+    opacity: 1;
+}
+
+.review-button {
+    margin-top: 8px;
+    padding: 11px 16px;
+    border: 1px solid #111827;
+    border-radius: 7px;
+    background-color: #111827;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.review-button:hover {
+    background-color: #ffffff;
+    color: #111827;
+}
+
+.review-button:focus {
+    outline: 2px solid #111827;
+    outline-offset: 2px;
+}
+
+.submitted-review {
+    display: none;
+    margin-top: 18px;
+    padding: 15px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 7px;
+    color: #374151;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.submitted-review.visible {
+    display: block;
+}
+
+.submitted-review-rating {
+    margin-bottom: 6px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.submitted-review-text {
+    margin: 0;
+    color: #4b5563;
+}
+
+@media (max-width: 560px) {
+
+    .review-section {
+        margin-top: 20px;
+        padding-top: 18px;
+    }
+
+    .star-rating label {
+        font-size: 1.5rem;
+    }
+
+}
+
+/* ========================================
+   Registration Validation Animation
+======================================== */
+
+.form-error {
+    min-height: 20px;
+    margin-top: 6px;
+    color: #b91c1c;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.form-error:not(:empty) {
+    opacity: 1;
+}
+
+.form-success {
+    min-height: 20px;
+    margin-top: 18px;
+    color: #166534;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.form-success.success-visible {
+    animation: registrationSuccess 0.5s ease;
+}
+
+@keyframes registrationSuccess {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.03);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+```

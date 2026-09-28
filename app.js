@@ -113,9 +113,11 @@ function updateGallery() {
         return;
     }
 
+
     if (filteredProducts.length === 0) {
 
-        galleryImage.src = "images/laptop.png";
+        galleryImage.src =
+            "images/laptop.png";
 
         galleryImage.alt =
             "No products available";
@@ -129,10 +131,15 @@ function updateGallery() {
         return;
     }
 
-    if (currentGalleryIndex >= filteredProducts.length) {
+
+    if (
+        currentGalleryIndex >=
+        filteredProducts.length
+    ) {
 
         currentGalleryIndex = 0;
     }
+
 
     if (currentGalleryIndex < 0) {
 
@@ -140,8 +147,10 @@ function updateGallery() {
             filteredProducts.length - 1;
     }
 
+
     const product =
         filteredProducts[currentGalleryIndex];
+
 
     galleryImage.src =
         product.image;
@@ -169,19 +178,26 @@ function filterProducts() {
     const selectedCategory =
         categoryFilter.value;
 
-    filteredProducts = products.filter(function (product) {
 
-        const matchesSearch =
-            product.name
-                .toLowerCase()
-                .includes(searchTerm);
+    filteredProducts =
+        products.filter(function (product) {
 
-        const matchesCategory =
-            selectedCategory === "all" ||
-            product.category === selectedCategory;
+            const matchesSearch =
+                product.name
+                    .toLowerCase()
+                    .includes(searchTerm);
 
-        return matchesSearch && matchesCategory;
-    });
+
+            const matchesCategory =
+                selectedCategory === "all" ||
+                product.category === selectedCategory;
+
+
+            return (
+                matchesSearch &&
+                matchesCategory
+            );
+        });
 
 
     productCards.forEach(function (card) {
@@ -189,11 +205,13 @@ function filterProducts() {
         const productName =
             card.querySelector("h3").textContent;
 
+
         const shouldShow =
             filteredProducts.some(function (product) {
 
                 return product.name === productName;
             });
+
 
         if (shouldShow) {
 
@@ -227,12 +245,16 @@ function filterProducts() {
 // Search and Category Events
 // ========================================
 
-if (searchInput && categoryFilter) {
+if (
+    searchInput &&
+    categoryFilter
+) {
 
     searchInput.addEventListener(
         "input",
         filterProducts
     );
+
 
     categoryFilter.addEventListener(
         "change",
@@ -253,11 +275,16 @@ if (galleryPrevious) {
 
             currentGalleryIndex--;
 
-            if (currentGalleryIndex < 0) {
+
+            if (
+                filteredProducts.length > 0 &&
+                currentGalleryIndex < 0
+            ) {
 
                 currentGalleryIndex =
                     filteredProducts.length - 1;
             }
+
 
             updateGallery();
         }
@@ -277,13 +304,16 @@ if (galleryNext) {
 
             currentGalleryIndex++;
 
+
             if (
+                filteredProducts.length > 0 &&
                 currentGalleryIndex >=
                 filteredProducts.length
             ) {
 
                 currentGalleryIndex = 0;
             }
+
 
             updateGallery();
         }
@@ -307,8 +337,14 @@ function setupQuantityCalculator(product) {
     const quantityInput =
         product.querySelector(".quantity-input");
 
+
+    const quantityError =
+        product.querySelector(".quantity-error");
+
+
     const totalDisplay =
         product.querySelector(".quantity-total strong");
+
 
     const price =
         Number(product.dataset.price);
@@ -316,18 +352,99 @@ function setupQuantityCalculator(product) {
 
     function calculateTotal() {
 
-        let quantity =
-            Number(quantityInput.value);
+        const rawQuantity =
+            quantityInput.value.trim();
 
-        if (
-            quantity < 1 ||
-            Number.isNaN(quantity)
-        ) {
 
-            quantity = 1;
+        // ========================================
+        // Empty Quantity
+        // ========================================
 
-            quantityInput.value = 1;
+        if (rawQuantity === "") {
+
+            quantityError.textContent =
+                "Quantity cannot be empty.";
+
+            totalDisplay.textContent =
+                "Enter a valid quantity.";
+
+            return;
         }
+
+
+        const quantity =
+            Number(rawQuantity);
+
+
+        // ========================================
+        // Non-Numeric Quantity
+        // ========================================
+
+        if (Number.isNaN(quantity)) {
+
+            quantityError.textContent =
+                "Please enter a valid number for the quantity.";
+
+            totalDisplay.textContent =
+                "Enter a valid quantity.";
+
+            return;
+        }
+
+
+        // ========================================
+        // Negative Quantity
+        // ========================================
+
+        if (quantity < 0) {
+
+            quantityError.textContent =
+                "Quantity cannot be negative.";
+
+            totalDisplay.textContent =
+                "Enter a valid quantity.";
+
+            return;
+        }
+
+
+        // ========================================
+        // Zero Quantity
+        // ========================================
+
+        if (quantity === 0) {
+
+            quantityError.textContent =
+                "Quantity must be greater than zero.";
+
+            totalDisplay.textContent =
+                "Enter a valid quantity.";
+
+            return;
+        }
+
+
+        // ========================================
+        // Decimal Quantity
+        // ========================================
+
+        if (!Number.isInteger(quantity)) {
+
+            quantityError.textContent =
+                "Quantity must be a whole number.";
+
+            totalDisplay.textContent =
+                "Enter a valid quantity.";
+
+            return;
+        }
+
+
+        // ========================================
+        // Valid Quantity
+        // ========================================
+
+        quantityError.textContent = "";
 
 
         const total =
@@ -359,6 +476,7 @@ productCards.forEach(function (product) {
     const quantityInput =
         product.querySelector(".quantity-input");
 
+
     if (quantityInput) {
 
         setupQuantityCalculator(product);
@@ -380,17 +498,22 @@ if (registrationForm) {
     const fullNameInput =
         document.getElementById("fullName");
 
+
     const emailInput =
         document.getElementById("email");
+
 
     const passwordInput =
         document.getElementById("password");
 
+
     const confirmPasswordInput =
         document.getElementById("confirmPassword");
 
+
     const showPassword =
         document.getElementById("showPassword");
+
 
     const formSuccess =
         document.getElementById("formSuccess");
@@ -417,6 +540,11 @@ if (registrationForm) {
 
 
             formSuccess.textContent = "";
+
+
+            formSuccess.classList.remove(
+                "success-visible"
+            );
 
 
             let isValid = true;
@@ -539,6 +667,15 @@ if (registrationForm) {
                 formSuccess.textContent =
                     "Registration successful! Your CampusMarket account has been created.";
 
+
+                void formSuccess.offsetWidth;
+
+
+                formSuccess.classList.add(
+                    "success-visible"
+                );
+
+
                 registrationForm.reset();
 
             } else {
@@ -562,15 +699,227 @@ if (registrationForm) {
             if (showPassword.checked) {
 
                 passwordInput.type = "text";
-                confirmPasswordInput.type = "text";
+
+                confirmPasswordInput.type =
+                    "text";
 
             } else {
 
-                passwordInput.type = "password";
-                confirmPasswordInput.type = "password";
+                passwordInput.type =
+                    "password";
+
+                confirmPasswordInput.type =
+                    "password";
             }
 
         }
     );
 
 }
+
+
+// ========================================
+// Product Ratings and Reviews
+// ========================================
+
+const reviewButtons =
+    document.querySelectorAll(".review-button");
+
+
+reviewButtons.forEach(function (button) {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            const reviewSection =
+                button.closest(".review-section");
+
+
+            const productName =
+                button.dataset.product;
+
+
+            const reviewInput =
+                reviewSection.querySelector(".review-input");
+
+
+            const reviewError =
+                reviewSection.querySelector(".review-error");
+
+
+            const submittedReview =
+                reviewSection.querySelector(
+                    ".submitted-review"
+                );
+
+
+            const selectedRating =
+                reviewSection.querySelector(
+                    'input[type="radio"]:checked'
+                );
+
+
+            // ========================================
+            // Clear Previous Error
+            // ========================================
+
+            reviewError.textContent = "";
+
+
+            // ========================================
+            // Validate Rating
+            // ========================================
+
+            if (!selectedRating) {
+
+                reviewError.textContent =
+                    "Please select a star rating.";
+
+                return;
+            }
+
+
+            // ========================================
+            // Validate Review
+            // ========================================
+
+            const reviewText =
+                reviewInput.value.trim();
+
+
+            if (reviewText === "") {
+
+                reviewError.textContent =
+                    "Please write a review before submitting.";
+
+                return;
+            }
+
+
+            // ========================================
+            // Validate Review Length
+            // ========================================
+
+            if (reviewText.length < 5) {
+
+                reviewError.textContent =
+                    "Your review must contain at least 5 characters.";
+
+                return;
+            }
+
+
+            // ========================================
+            // Get Selected Rating
+            // ========================================
+
+            const rating =
+                Number(selectedRating.value);
+
+
+            const stars =
+                "★".repeat(rating) +
+                "☆".repeat(5 - rating);
+
+
+            // ========================================
+            // Clear Previous Submitted Review
+            // ========================================
+
+            while (
+                submittedReview.firstChild
+            ) {
+
+                submittedReview.removeChild(
+                    submittedReview.firstChild
+                );
+            }
+
+
+            // ========================================
+            // Create Review Elements
+            // ========================================
+
+            const productDisplay =
+                document.createElement("p");
+
+
+            productDisplay.className =
+                "submitted-review-text";
+
+
+            productDisplay.textContent =
+                "Review for " + productName;
+
+
+            const ratingDisplay =
+                document.createElement("p");
+
+
+            ratingDisplay.className =
+                "submitted-review-rating";
+
+
+            ratingDisplay.textContent =
+                stars;
+
+
+            const reviewDisplay =
+                document.createElement("p");
+
+
+            reviewDisplay.className =
+                "submitted-review-text";
+
+
+            reviewDisplay.textContent =
+                reviewText;
+
+
+            // ========================================
+            // Add Elements to Submitted Review
+            // ========================================
+
+            submittedReview.appendChild(
+                productDisplay
+            );
+
+
+            submittedReview.appendChild(
+                ratingDisplay
+            );
+
+
+            submittedReview.appendChild(
+                reviewDisplay
+            );
+
+
+            submittedReview.classList.add(
+                "visible"
+            );
+
+
+            // ========================================
+            // Clear Input After Successful Submission
+            // ========================================
+
+            reviewInput.value = "";
+
+
+            const selectedRadio =
+                reviewSection.querySelector(
+                    'input[type="radio"]:checked'
+                );
+
+
+            if (selectedRadio) {
+
+                selectedRadio.checked = false;
+            }
+
+        }
+    );
+
+});
