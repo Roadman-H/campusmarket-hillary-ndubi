@@ -1,16 +1,160 @@
 // ========================================
-// CampusMarket 
+// CampusMarket JavaScript
 // ========================================
 
 
 // ========================================
-// Product Catalog Elements
+// Shared Product Data
 // ========================================
 
-const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
-const productCards = document.querySelectorAll(".product-card");
-const noResultsMessage = document.getElementById("noResultsMessage");
+const products = [
+    {
+        name: "Student Laptop",
+        category: "electronics",
+        price: 45000,
+        image: "images/laptop.png",
+        alt: "Student laptop suitable for programming, research, and university work"
+    },
+    {
+        name: "Campus Backpack",
+        category: "accessories",
+        price: 2500,
+        image: "images/backpack.png",
+        alt: "Campus backpack for carrying books, a laptop, and daily essentials"
+    },
+    {
+        name: "Wireless Headphones",
+        category: "electronics",
+        price: 3500,
+        image: "images/headphones.png",
+        alt: "Wireless headphones for studying, online learning, music, and entertainment"
+    },
+    {
+        name: "Academic Notebook",
+        category: "stationery",
+        price: 350,
+        image: "images/notebook.png",
+        alt: "Academic notebook for lectures, assignments, revision, and personal notes"
+    },
+    {
+        name: "Programming Textbook",
+        category: "books",
+        price: 2800,
+        image: "images/textbook.png",
+        alt: "Programming textbook covering fundamental software development concepts"
+    },
+    {
+        name: "Campus Hoodie",
+        category: "fashion",
+        price: 2000,
+        image: "images/hoodie.png",
+        alt: "Comfortable campus hoodie suitable for lectures, studying, and casual wear"
+    }
+];
+
+
+// ========================================
+// Catalog Elements
+// ========================================
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const categoryFilter =
+    document.getElementById("categoryFilter");
+
+const productCards =
+    document.querySelectorAll(".catalog-grid .product-card");
+
+const noResultsMessage =
+    document.getElementById("noResultsMessage");
+
+
+// ========================================
+// Gallery Elements
+// ========================================
+
+const galleryImage =
+    document.getElementById("galleryImage");
+
+const galleryCategory =
+    document.getElementById("galleryCategory");
+
+const galleryProductName =
+    document.getElementById("galleryProductName");
+
+const galleryPrevious =
+    document.getElementById("galleryPrevious");
+
+const galleryNext =
+    document.getElementById("galleryNext");
+
+
+// ========================================
+// Gallery State
+// ========================================
+
+let filteredProducts = [...products];
+
+let currentGalleryIndex = 0;
+
+
+// ========================================
+// Update Gallery
+// ========================================
+
+function updateGallery() {
+
+    if (
+        !galleryImage ||
+        !galleryCategory ||
+        !galleryProductName
+    ) {
+        return;
+    }
+
+    if (filteredProducts.length === 0) {
+
+        galleryImage.src = "images/laptop.png";
+
+        galleryImage.alt =
+            "No products available";
+
+        galleryCategory.textContent =
+            "No products";
+
+        galleryProductName.textContent =
+            "No products match your search.";
+
+        return;
+    }
+
+    if (currentGalleryIndex >= filteredProducts.length) {
+
+        currentGalleryIndex = 0;
+    }
+
+    if (currentGalleryIndex < 0) {
+
+        currentGalleryIndex =
+            filteredProducts.length - 1;
+    }
+
+    const product =
+        filteredProducts[currentGalleryIndex];
+
+    galleryImage.src =
+        product.image;
+
+    galleryImage.alt =
+        product.alt;
+
+    galleryCategory.textContent =
+        product.category;
+
+    galleryProductName.textContent =
+        product.name;
+}
 
 
 // ========================================
@@ -19,44 +163,51 @@ const noResultsMessage = document.getElementById("noResultsMessage");
 
 function filterProducts() {
 
-    const searchTerm = searchInput.value.toLowerCase().trim();
-    const selectedCategory = categoryFilter.value;
+    const searchTerm =
+        searchInput.value.toLowerCase().trim();
 
-    let visibleProducts = 0;
+    const selectedCategory =
+        categoryFilter.value;
 
-
-    productCards.forEach(function (product) {
-
-        const productName =
-            product.querySelector("h3").textContent.toLowerCase();
-
-        const productCategory =
-            product.dataset.category;
-
+    filteredProducts = products.filter(function (product) {
 
         const matchesSearch =
-            productName.includes(searchTerm);
+            product.name
+                .toLowerCase()
+                .includes(searchTerm);
 
         const matchesCategory =
             selectedCategory === "all" ||
-            productCategory === selectedCategory;
+            product.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
+    });
 
 
-        if (matchesSearch && matchesCategory) {
+    productCards.forEach(function (card) {
 
-            product.style.display = "";
+        const productName =
+            card.querySelector("h3").textContent;
 
-            visibleProducts++;
+        const shouldShow =
+            filteredProducts.some(function (product) {
+
+                return product.name === productName;
+            });
+
+        if (shouldShow) {
+
+            card.style.display = "";
 
         } else {
 
-            product.style.display = "none";
+            card.style.display = "none";
         }
 
     });
 
 
-    if (visibleProducts === 0) {
+    if (filteredProducts.length === 0) {
 
         noResultsMessage.hidden = false;
 
@@ -64,6 +215,11 @@ function filterProducts() {
 
         noResultsMessage.hidden = true;
     }
+
+
+    currentGalleryIndex = 0;
+
+    updateGallery();
 }
 
 
@@ -83,6 +239,63 @@ if (searchInput && categoryFilter) {
         filterProducts
     );
 }
+
+
+// ========================================
+// Gallery Previous Button
+// ========================================
+
+if (galleryPrevious) {
+
+    galleryPrevious.addEventListener(
+        "click",
+        function () {
+
+            currentGalleryIndex--;
+
+            if (currentGalleryIndex < 0) {
+
+                currentGalleryIndex =
+                    filteredProducts.length - 1;
+            }
+
+            updateGallery();
+        }
+    );
+}
+
+
+// ========================================
+// Gallery Next Button
+// ========================================
+
+if (galleryNext) {
+
+    galleryNext.addEventListener(
+        "click",
+        function () {
+
+            currentGalleryIndex++;
+
+            if (
+                currentGalleryIndex >=
+                filteredProducts.length
+            ) {
+
+                currentGalleryIndex = 0;
+            }
+
+            updateGallery();
+        }
+    );
+}
+
+
+// ========================================
+// Initial Gallery
+// ========================================
+
+updateGallery();
 
 
 // ========================================
@@ -106,8 +319,10 @@ function setupQuantityCalculator(product) {
         let quantity =
             Number(quantityInput.value);
 
-
-        if (quantity < 1 || Number.isNaN(quantity)) {
+        if (
+            quantity < 1 ||
+            Number.isNaN(quantity)
+        ) {
 
             quantity = 1;
 
@@ -120,7 +335,8 @@ function setupQuantityCalculator(product) {
 
 
         totalDisplay.textContent =
-            "KSh " + total.toLocaleString("en-KE");
+            "KSh " +
+            total.toLocaleString("en-KE");
     }
 
 
@@ -143,11 +359,9 @@ productCards.forEach(function (product) {
     const quantityInput =
         product.querySelector(".quantity-input");
 
-
     if (quantityInput) {
 
         setupQuantityCalculator(product);
-
     }
 
 });
@@ -190,18 +404,17 @@ if (registrationForm) {
         "submit",
         function (event) {
 
-            // Prevent the form from submitting/reloading
             event.preventDefault();
 
 
-            // Clear previous messages
-            document.querySelectorAll(".form-error").forEach(
-                function (error) {
+            document
+                .querySelectorAll(".form-error")
+                .forEach(function (error) {
 
                     error.textContent = "";
 
-                }
-            );
+                });
+
 
             formSuccess.textContent = "";
 
@@ -213,9 +426,13 @@ if (registrationForm) {
             // Full Name Validation
             // ========================================
 
-            if (fullNameInput.value.trim() === "") {
+            if (
+                fullNameInput.value.trim() === ""
+            ) {
 
-                document.getElementById("fullNameError").textContent =
+                document
+                    .getElementById("fullNameError")
+                    .textContent =
                     "Please enter your full name.";
 
                 isValid = false;
@@ -230,16 +447,26 @@ if (registrationForm) {
                 /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-            if (emailInput.value.trim() === "") {
+            if (
+                emailInput.value.trim() === ""
+            ) {
 
-                document.getElementById("emailError").textContent =
+                document
+                    .getElementById("emailError")
+                    .textContent =
                     "Please enter your email address.";
 
                 isValid = false;
 
-            } else if (!emailPattern.test(emailInput.value.trim())) {
+            } else if (
+                !emailPattern.test(
+                    emailInput.value.trim()
+                )
+            ) {
 
-                document.getElementById("emailError").textContent =
+                document
+                    .getElementById("emailError")
+                    .textContent =
                     "Please enter a valid email address.";
 
                 isValid = false;
@@ -250,16 +477,24 @@ if (registrationForm) {
             // Password Validation
             // ========================================
 
-            if (passwordInput.value === "") {
+            if (
+                passwordInput.value === ""
+            ) {
 
-                document.getElementById("passwordError").textContent =
+                document
+                    .getElementById("passwordError")
+                    .textContent =
                     "Please enter a password.";
 
                 isValid = false;
 
-            } else if (passwordInput.value.length < 8) {
+            } else if (
+                passwordInput.value.length < 8
+            ) {
 
-                document.getElementById("passwordError").textContent =
+                document
+                    .getElementById("passwordError")
+                    .textContent =
                     "Password must be at least 8 characters long.";
 
                 isValid = false;
@@ -270,18 +505,25 @@ if (registrationForm) {
             // Confirm Password Validation
             // ========================================
 
-            if (confirmPasswordInput.value === "") {
+            if (
+                confirmPasswordInput.value === ""
+            ) {
 
-                document.getElementById("confirmPasswordError").textContent =
+                document
+                    .getElementById("confirmPasswordError")
+                    .textContent =
                     "Please confirm your password.";
 
                 isValid = false;
 
             } else if (
-                confirmPasswordInput.value !== passwordInput.value
+                confirmPasswordInput.value !==
+                passwordInput.value
             ) {
 
-                document.getElementById("confirmPasswordError").textContent =
+                document
+                    .getElementById("confirmPasswordError")
+                    .textContent =
                     "Passwords do not match.";
 
                 isValid = false;

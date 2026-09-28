@@ -645,3 +645,114 @@ Part 3 - Responsive Registration
   }
 
 }
+
+
+/* ========================================
+   Product Gallery
+======================================== */
+
+.gallery-section {
+    margin-top: 80px;
+    padding-top: 70px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 25px;
+    max-width: 900px;
+    margin: 40px auto 0;
+}
+
+.gallery-image-container {
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.gallery-image-container img {
+    width: 100%;
+    height: 420px;
+    display: block;
+    object-fit: cover;
+}
+
+.gallery-info {
+    padding: 24px;
+}
+
+.gallery-info .product-category {
+    margin-bottom: 8px;
+}
+
+.gallery-info h3 {
+    margin: 0;
+}
+
+.gallery-button {
+    padding: 12px 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    background-color: #ffffff;
+    color: #111827;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.gallery-button:hover {
+    background-color: #111827;
+    color: #ffffff;
+    border-color: #111827;
+}
+
+.gallery-button:focus {
+    outline: 2px solid #111827;
+    outline-offset: 2px;
+}
+
+@media (max-width: 800px) {
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .gallery-image-container {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .gallery-prev {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .gallery-next {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+}
+
+@media (max-width: 560px) {
+
+    .gallery-section {
+        margin-top: 60px;
+        padding-top: 55px;
+    }
+
+    .gallery-image-container img {
+        height: 280px;
+    }
+
+    .gallery-info {
+        padding: 20px;
+    }
+
+}
