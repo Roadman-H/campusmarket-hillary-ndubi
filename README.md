@@ -1,38 +1,50 @@
 Full Name: Hillary Ndubi
 Admission Number: CIT-227-115/2024
-Live Site: [To be added after deployment]
+Live Site: https://roadman-h.github.io/campusmarket-hillary-ndubi/
 
 # CampusMarket
 
-CampusMarket is a university marketplace website that I developed for my CCS 2314 Web Based Programming II semester project.
+CampusMarket is a database-driven e-commerce web application developed for my CCS 2314 Web Based Programming II semester project.
 
-The main idea behind the project is to create a simple online marketplace where university students can browse products, search for items, filter products by category, and register for an account.
+The main idea behind the project is to create a simple online marketplace where university students and the campus community can browse products, search for items, filter products by category, calculate quantities, rate products, submit reviews, and register for an account.
 
-## What I Have Built
+## Features
 
-So far, I have worked on the following features:
+The current version of CampusMarket includes:
 
-- A Home page for the CampusMarket website
-- A Catalog page where products are displayed
-- A search feature for finding products
-- A category filter for narrowing down products
-- Quantity controls for the products
-- Automatic calculation of product totals based on quantity
-- A Registration page
-- Registration form validation
+- Home page
+- Product catalog
+- Product search
+- Category filtering
+- Product quantity controls
+- Quantity validation
+- Automatic product total calculations
+- Product image gallery
+- Gallery navigation with previous and next controls
+- Gallery updates based on filtered products
+- Five-star product ratings
+- Product review submission
+- Review validation
+- Registration form
+- Registration validation
+- Email format validation
+- Password validation
+- Password confirmation
 - Password show/hide functionality
-- Specific feedback when a form has errors
-- Confirmation feedback after successful registration
-- Responsive styling for different screen sizes
-- Consistent navigation and footer across the pages
+- Specific validation feedback
+- Animated successful registration confirmation
+- Responsive design
+- Meaningful alternative text for product images
+- Consistent navigation and footer across the website
 
-## Technologies I Used
+## Technologies Used
 
 - HTML5
 - CSS3
 - JavaScript
 - Git
 - GitHub
+- GitHub Pages
 
 ## Pages
 
@@ -42,78 +54,48 @@ The project currently has three main pages:
 - Catalog — `catalog.html`
 - Register — `register.html`
 
-## How I Built It
+## Product Categories
 
-I built the project step by step during the semester. I started with the basic HTML structure and styling, then added JavaScript functionality, calculations, filtering, and form validation.
+The catalog contains products from different categories, including:
 
-The project uses separate HTML, CSS, and JavaScript files. I also use Git and GitHub to keep track of my work and changes throughout the project.
+- Electronics
+- Accessories
+- Stationery
+- Books
+- Fashion
 
-## Running the Project
+## JavaScript Functionality
 
-The project uses plain HTML, CSS, and JavaScript, so no build command is required.
+JavaScript is used throughout the website to provide interactive functionality.
 
-I can run the project locally using a development server such as VS Code Live Server.
+The catalog uses a shared product data structure for filtering and the product gallery. When a user searches for a product or selects a category, the visible products and gallery are updated using the same product data.
 
-## GitHub Repository
+Quantity calculations only use valid quantities. Empty, zero, negative, decimal, and non-numeric values are rejected with specific feedback.
 
-The project is stored in my private GitHub repository and will be submitted through Google Classroom as required.
-%s\n
-Full Name: Hillary Ndubi
-Admission Number: CIT-227-115/2024
-Live Site: [To be added after deployment]
+The registration form uses JavaScript validation for required fields, email format, password length, and password confirmation. Successful registration displays an animated confirmation without reloading the page.
 
-# CampusMarket
+The product review system allows users to select a five-star rating and submit a written review. Reviews are validated before being displayed on the page.
 
-CampusMarket is a university marketplace website that I developed for my CCS 2314 Web Based Programming II semester project.
+## Accessibility
 
-The main idea behind the project is to create a simple online marketplace where university students can browse products, search for items, filter products by category, and register for an account.
+The website includes meaningful `alt` text for product images, labels for form controls, accessible feedback areas, and keyboard-focus styling for interactive elements.
 
-## What I Have Built
+## Responsive Design
 
-So far, I have worked on the following features:
+The website is designed to adapt to different screen sizes. Product grids, navigation, forms, and the image gallery adjust on smaller screens to prevent content from overflowing.
 
-- A Home page for the CampusMarket website
-- A Catalog page where products are displayed
-- A search feature for finding products
-- A category filter for narrowing down products
-- Quantity controls for the products
-- Automatic calculation of product totals based on quantity
-- A Registration page
-- Registration form validation
-- Password show/hide functionality
-- Specific feedback when a form has errors
-- Confirmation feedback after successful registration
-- Responsive styling for different screen sizes
-- Consistent navigation and footer across the pages
-
-## Technologies I Used
-
-- HTML5
-- CSS3
-- JavaScript
-- Git
-- GitHub
-
-## Pages
-
-The project currently has three main pages:
-
-- Home — `index.html`
-- Catalog — `catalog.html`
-- Register — `register.html`
-
-## How I Built It
-
-I built the project step by step during the semester. I started with the basic HTML structure and styling, then added JavaScript functionality, calculations, filtering, and form validation.
-
-The project uses separate HTML, CSS, and JavaScript files. I also use Git and GitHub to keep track of my work and changes throughout the project.
-
-## Running the Project
+## Running the Project Locally
 
 The project uses plain HTML, CSS, and JavaScript, so no build command is required.
 
-I can run the project locally using a development server such as VS Code Live Server.
+The website can be opened directly in a browser or run using a local development server such as VS Code Live Server.
+
+## Live Website
+
+The deployed website is available at:
+
+https://roadman-h.github.io/campusmarket-hillary-ndubi/
 
 ## GitHub Repository
 
-The project is stored in my private GitHub repository and will be submitted through Google Classroom as required.
+The project is stored in my private GitHub repository and is submitted through Google Classroom as required.
